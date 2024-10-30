@@ -22,13 +22,13 @@ crontab -l > "$TEMP_CRON"
 if grep -q "$NODE_SCRIPT" "$TEMP_CRON"; then
     echo "Cron job already exists. No changes made."
 else
-    # Add the new cron job to run every 24 hours
-    echo "0 0 * * * /usr/bin/node $NODE_SCRIPT >> $SCRIPT_DIR/cron.log 2>&1" >> "$TEMP_CRON"
+    # Add the new cron job to run every 24 hours at noon (12:00 PM)
+    echo "0 12 * * * /usr/bin/node $NODE_SCRIPT >> $SCRIPT_DIR/cron.log 2>&1" >> "$TEMP_CRON"
 
     # Install the new crontab
     crontab "$TEMP_CRON"
 
-    echo "Cron job added successfully. It will run every day at midnight."
+    echo "Cron job added successfully. It will run every day at noon."
 fi
 
 # Remove the temporary file
