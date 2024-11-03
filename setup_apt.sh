@@ -18,4 +18,14 @@ echo "npm version: $(npm --version)"
 echo "Installing project dependencies..."
 npm install
 
+# Install PM2 globally
+echo "Installing PM2..."
+sudo npm install -g pm2
+
+# Verify PM2 installation
+echo "PM2 version: $(pm2 --version)"
+
+# Setup PM2 to start on system boot
+sudo pm2 startup systemd
+
 echo "Setup complete! Don't forget to create your .env file if you haven't already." 

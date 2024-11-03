@@ -23,9 +23,21 @@ fi
 echo "Installing npm dependencies..."
 npm install
 
+# Install PM2 globally if not present
+if ! command -v pm2 &> /dev/null; then
+    echo "Installing PM2..."
+    npm install -g pm2
+else
+    echo "PM2 already installed"
+fi
+
 # Verify installations
 echo "Setup complete! Versions installed:"
 echo "Node version: $(node --version)"
 echo "npm version: $(npm --version)"
+echo "PM2 version: $(pm2 --version)"
+
+# Setup PM2 to start on system boot
+pm2 startup
 
 echo "Don't forget to create your .env file if you haven't already."
