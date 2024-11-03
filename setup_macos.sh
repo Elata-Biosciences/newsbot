@@ -39,5 +39,6 @@ echo "PM2 version: $(pm2 --version)"
 
 # Setup PM2 to start on system boot
 pm2 startup
+pm2 start ecosystem.config.cjs
 
 echo "Don't forget to create your .env file if you haven't already."
